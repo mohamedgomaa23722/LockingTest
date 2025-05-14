@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.deployment.name }}
+  labels:
+    group: {{ .Values.group }}
+    stage: {{ .Values.stage }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.templateApp }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.templateApp }}
+    spec:
+      containers:
+        - name: {{.Values.container.name}}
+          image: mohamedgomaa567/{{ .Values.image.name}}
+          volumeMounts:
+            - mountPath: /opt/app/config
+              name: {{ .Values.config.volume.name }}
+              readOnly: true
+      volumes:
+        - name: {{ .Values.config.volume.name }}
+          configMap:
+            name: {{ .Values.config.name }}
+            items:
+              - path: application.yaml
+                key: application.yaml

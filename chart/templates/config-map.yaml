@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.config.name }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    group: {{ .Values.group }}
+    stage: {{ .Values.stage }}
+
+data:
+  application.properties: |-
+    server.port = {{ .Values.port }}
+    spring.application.name= {{ .Values.name }}
+    com.mg.client.payment.uri= {{ .Values.Payment.uri }}
+    com.mg.client.order.uri= {{ .Values.order.uri }}

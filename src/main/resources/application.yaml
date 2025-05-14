@@ -1,0 +1,29 @@
+
+spring:
+  application:
+    name: databaseproj
+  datasource:
+    url: jdbc:mysql://localhost:3306/dbtest?createDatabaseIfNotExist=true
+    username: root
+    password: 1234567
+  jpa:
+    #    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+server:
+  port: 8089
+
+com:
+  vodafone:
+    dxl:
+      blackListEndPoints:
+        test:
+          - gomaa
+          - mohamed
+        test2:
+          - ahmed
+          - ismail

@@ -1,0 +1,31 @@
+group: example
+stage: test
+namespace: cloud-test
+templateApp: user-template
+container:
+  name: user-service
+
+deployment:
+  name: js-user-service-deployment
+
+config:
+  name: user-config-map-env
+  volume:
+    name: user-config-map
+
+image:
+  name: microservice-user:3
+
+port: 8080
+name: js-user-service
+
+Payment:
+  uri: test
+
+order:
+  uri: test
+
+replicas: 1
+
+service:
+  name: user-svc
